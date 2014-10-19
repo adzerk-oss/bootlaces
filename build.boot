@@ -22,11 +22,11 @@
         :ensure-clean   true
         :ensure-tag     (last-commit)
         :ensure-version +VERSION+]
-  pom  [:project        'tailrecursion/boot-cljs
+  pom  [:project        'tailrecursion/boot-useful
         :version        +VERSION+
-        :description    "Boot task to compile ClojureScript applications."
-        :url            "https://github.com/tailrecursion/boot-cljs"
-        :scm            {:url "https://github.com/tailrecursion/boot-cljs"}
+        :description    "Micha's assorted boot configurations."
+        :url            "https://github.com/tailrecursion/boot-useful"
+        :scm            {:url "https://github.com/tailrecursion/boot-useful"}
         :license        {:name "Eclipse Public License"
                          :url  "http://www.eclipse.org/legal/epl-v10.html"}])
 
