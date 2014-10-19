@@ -5,7 +5,7 @@
    [boot.task.built-in :refer :all]
    [boot.git           :refer [last-commit]]))
 
-(def +VERSION+
+(def ^:private +VERSION+
   (do (require 'boot.user)
       @(resolve 'boot.user/+VERSION+)))
 
@@ -21,7 +21,7 @@
                      :username (System/getenv "CLOJARS_USER")
                      :password (System/getenv "CLOJARS_PASS")}]))
 
-(task-options! push [:repo           "deploy"
+(task-options! push [:repo           "deploy-clojars"
                      :ensure-branch  "master"
                      :ensure-clean   true
                      :ensure-version +VERSION+
