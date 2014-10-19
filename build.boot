@@ -10,11 +10,7 @@
   '[clojure.java.io :as io]
   '[boot.git :refer [last-commit]])
 
-(def +version+ "0.1.1")
-
-(def +gpg-config+
-  (let [f (io/file "gpg.edn")]
-    (when (.exists f) (read-string (slurp f)))))
+(def +version+ "0.1.2")
 
 (task-options!
   push [:repo           "deploy"
@@ -49,6 +45,4 @@
     :file           file
     :tag            true
     :gpg-sign       true
-    :gpg-keyring    (:keyring +gpg-config+)
-    :gpg-user-id    (:user-id +gpg-config+)
     :ensure-release true))
