@@ -5,27 +5,25 @@
    [boot.task.built-in :refer :all]
    [boot.git           :refer [last-commit]]))
 
-(def ^:private +VERSION+
-  (do (require 'boot.user)
-      @(resolve 'boot.user/+VERSION+)))
-
-(def +GPG-CONFIG+
+(def +gpg-config+
   (let [f (io/file "gpg.edn")]
     (when (.exists f) (read-string (slurp f)))))
 
-(set-env!
-  :src-paths    #{"src"}
-  :repositories #(conj %
-                   ["deploy-clojars"
-                    {:url      "https://clojars.org/repo"
-                     :username (System/getenv "CLOJARS_USER")
-                     :password (System/getenv "CLOJARS_PASS")}]))
+(defn useful!
+  [version]
+  (set-env!
+    :src-paths    #{"src"}
+    :repositories #(conj %
+                     ["deploy-clojars"
+                      {:url      "https://clojars.org/repo"
+                       :username (System/getenv "CLOJARS_USER")
+                       :password (System/getenv "CLOJARS_PASS")}]))
 
-(task-options! push [:repo           "deploy-clojars"
-                     :ensure-branch  "master"
-                     :ensure-clean   true
-                     :ensure-version +VERSION+
-                     :ensure-tag     (last-commit)])
+  (task-options! push [:repo           "deploy-clojars"
+                       :ensure-branch  "master"
+                       :ensure-clean   true
+                       :ensure-version version
+                       :ensure-tag     (last-commit)]))
 
 (deftask push-snapshot
   "Deploy snapshot version to Clojars."
@@ -41,6 +39,6 @@
     :file           file
     :tag            true
     :gpg-sign       true
-    :gpg-keyring    (:keyring +GPG-CONFIG+)
-    :gpg-user-id    (:user-id +GPG-CONFIG+)
+    :gpg-keyring    (:keyring +gpg-config+)
+    :gpg-user-id    (:user-id +gpg-config+)
     :ensure-release true))

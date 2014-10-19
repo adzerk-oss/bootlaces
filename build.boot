@@ -10,9 +10,9 @@
   '[clojure.java.io :as io]
   '[boot.git :refer [last-commit]])
 
-(def +VERSION+ "0.1.0")
+(def +version+ "0.1.1")
 
-(def +GPG-CONFIG+
+(def +gpg-config+
   (let [f (io/file "gpg.edn")]
     (when (.exists f) (read-string (slurp f)))))
 
@@ -21,9 +21,9 @@
         :ensure-branch  "master"
         :ensure-clean   true
         :ensure-tag     (last-commit)
-        :ensure-version +VERSION+]
+        :ensure-version +version+]
   pom  [:project        'tailrecursion/boot-useful
-        :version        +VERSION+
+        :version        +version+
         :description    "Micha's assorted boot configurations and things."
         :url            "https://github.com/tailrecursion/boot-useful"
         :scm            {:url "https://github.com/tailrecursion/boot-useful"}
@@ -49,6 +49,6 @@
     :file           file
     :tag            true
     :gpg-sign       true
-    :gpg-keyring    (:keyring +GPG-CONFIG+)
-    :gpg-user-id    (:user-id +GPG-CONFIG+)
+    :gpg-keyring    (:keyring +gpg-config+)
+    :gpg-user-id    (:user-id +gpg-config+)
     :ensure-release true))
