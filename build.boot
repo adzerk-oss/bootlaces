@@ -10,7 +10,7 @@
   '[clojure.java.io :as io]
   '[boot.git :refer [last-commit]])
 
-(def +VERSION+ "0.1.0-SNAPSHOT")
+(def +VERSION+ "0.1.0")
 
 (def +GPG-CONFIG+
   (let [f (io/file "gpg.edn")]
