@@ -22,11 +22,11 @@
         :ensure-clean   true
         :ensure-tag     (last-commit)
         :ensure-version +VERSION+]
-  pom  [:project        'tailrecursion/boot-useful
+  pom  [:project        'tailrecursion/boot-cljs
         :version        +VERSION+
-        :description    "Micha's assorted boot configurations."
-        :url            "https://github.com/tailrecursion/boot-useful"
-        :scm            {:url "https://github.com/tailrecursion/boot-useful"}
+        :description    "DELETE ME."
+        :url            "https://github.com/tailrecursion/boot-cljs"
+        :scm            {:url "https://github.com/tailrecursion/boot-cljs"}
         :license        {:name "Eclipse Public License"
                          :url  "http://www.eclipse.org/legal/epl-v10.html"}])
 
