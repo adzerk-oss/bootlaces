@@ -25,12 +25,15 @@
                        :ensure-version version
                        :ensure-tag     (last-commit)]))
 
+(deftask build-jar
+  "Build jar and install to local repo."
+  []
+  (comp (pom) (add-src) (jar) (install)))
+
 (deftask push-snapshot
   "Deploy snapshot version to Clojars."
   [f file PATH str "The jar file to deploy."]
-  (push
-    :file            file
-    :ensure-snapshot true))
+  (push :file file :ensure-snapshot true))
 
 (deftask push-release
   "Deploy release version to Clojars."

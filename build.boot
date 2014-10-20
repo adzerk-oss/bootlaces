@@ -10,7 +10,7 @@
   '[clojure.java.io :as io]
   '[boot.git :refer [last-commit]])
 
-(def +version+ "0.1.2")
+(def +version+ "0.1.3")
 
 (task-options!
   push [:repo           "deploy"
@@ -26,7 +26,7 @@
         :license        {:name "Eclipse Public License"
                          :url  "http://www.eclipse.org/legal/epl-v10.html"}])
 
-(deftask build
+(deftask build-jar
   "Build jar and install to local repo."
   []
   (comp (pom) (add-src) (jar) (install)))
