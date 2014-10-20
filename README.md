@@ -1,11 +1,9 @@
-# boot-useful
+# boot-useful [![Clojars Project][2]][3]
 
 Handy tasks and things for the [boot Clojure build tool][1].
 
 * Provides `build-jar`, `push-snapshot`, and `push-release` tasks
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
-
-[![Clojars Project][2]][3]
 
 ## Usage
 
