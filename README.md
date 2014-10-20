@@ -7,6 +7,22 @@ Handy tasks and things for the [boot Clojure build tool][1].
 * Provides `build-jar`, `push-snapshot`, and `push-release` tasks
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
 
+## Usage
+
+Add `boot-useful` to your `build.boot` dependencies and `require` the namespace:
+
+```clj
+(set-env! :dependencies '[[tailrecursion/boot-useful "X.Y.Z" :scope "test"]])
+(require '[tailrecursion.boot-useful :refer :all])
+```
+
+Then initialize useful with the project version:
+
+```clj
+(def +version+ "0.0-2371-5")
+(useful! +version+)
+```
+
 Some things you can do in the terminal:
 
 ```bash
@@ -35,22 +51,6 @@ The `gpg.edn` file format:
 ```clojure
 {:keyring "/path/to/secring.gpg"
  :user-id "Micha Niskin <micha.niskin@gmail.com>"}
-```
-
-## Usage
-
-Add `boot-useful` to your `build.boot` dependencies and `require` the namespace:
-
-```clj
-(set-env! :dependencies '[[tailrecursion/boot-useful "X.Y.Z" :scope "test"]])
-(require '[tailrecursion.boot-useful :refer :all])
-```
-
-Then initialize useful with the project version:
-
-```clj
-(def +version+ "0.0-2371-5")
-(useful! +version+)
 ```
 
 ## License
