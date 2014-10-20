@@ -42,7 +42,7 @@ The `gpg.edn` file format:
 Add `boot-useful` to your `build.boot` dependencies and `require` the namespace:
 
 ```clj
-(set-env! :dependencies '[[tailrecursion/boot-useful "0.1.3" :scope "test"]])
+(set-env! :dependencies '[[tailrecursion/boot-useful "X.Y.Z" :scope "test"]])
 (require '[tailrecursion.boot-useful :refer :all])
 ```
 
