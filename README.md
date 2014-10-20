@@ -2,11 +2,14 @@
 
 Handy tasks and things for the [boot Clojure build tool][1].
 
+* Provides `build-jar`, `push-snapshot`, and `push-release` tasks
+* Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
+
 [![Clojars Project][2]][3]
 
 ## Usage
 
-Add `boot-useful` to your project dependencies and `require` the namespace:
+Add `boot-useful` to your `build.boot` dependencies and `require` the namespace:
 
 ```clj
 (set-env! :dependencies '[[tailrecursion/boot-useful "0.1.3" :scope "test"]])
