@@ -7,6 +7,8 @@ Handy tasks and things for the [boot Clojure build tool][1].
 * Provides `build-jar`, `push-snapshot`, and `push-release` tasks
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
 
+Some things you can do in the terminal:
+
 ```bash
 # build and install project jar file
 boot build-jar
@@ -26,6 +28,13 @@ boot build-jar push-snapshot
 ```bash
 # deploy release to clojars
 boot build-jar push-release
+```
+
+The `gpg.edn` file format:
+
+```clojure
+{:keyring "/path/to/secring.gpg"
+ :user-id "Micha Niskin <micha.niskin@gmail.com>"}
 ```
 
 ## Usage
