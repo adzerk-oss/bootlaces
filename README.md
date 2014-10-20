@@ -1,4 +1,6 @@
-# boot-useful [![Clojars Project][2]][3]
+# boot-useful
+
+[![Clojars Project][2]][3]
 
 Handy tasks and things for the [boot Clojure build tool][1].
 
