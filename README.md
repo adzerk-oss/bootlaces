@@ -7,23 +7,23 @@ Handy tasks and things for the [boot Clojure build tool][1].
 * Provides `build-jar`, `push-snapshot`, and `push-release` tasks
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
 
-```
+```bash
 # build and install project jar file
 $ boot build-jar
 ```
 
-```
+```bash
 # set environment variables
 $ export CLOJARS_USER=foo
 $ export CLOJARS_PASS=bar
 ```
 
-```
+```bash
 # deploy snapshot to clojars
 $ boot build-jar push-snapshot
 ```
 
-```
+```bash
 # deploy release to clojars
 $ boot build-jar push-release
 ```
