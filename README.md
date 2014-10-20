@@ -9,23 +9,23 @@ Handy tasks and things for the [boot Clojure build tool][1].
 
 ```bash
 # build and install project jar file
-> boot build-jar
+boot build-jar
 ```
 
 ```bash
 # set environment variables
-> export CLOJARS_USER=foo
-> export CLOJARS_PASS=bar
+export CLOJARS_USER=foo
+export CLOJARS_PASS=bar
 ```
 
 ```bash
 # deploy snapshot to clojars
-> boot build-jar push-snapshot
+boot build-jar push-snapshot
 ```
 
 ```bash
 # deploy release to clojars
-> boot build-jar push-release
+boot build-jar push-release
 ```
 
 ## Usage
