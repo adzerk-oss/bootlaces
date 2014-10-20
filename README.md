@@ -55,7 +55,7 @@ Then initialize useful with the project version:
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Micha Niskin and Alan Dipert
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
