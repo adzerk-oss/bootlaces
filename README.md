@@ -1,4 +1,4 @@
-# boot-useful
+# bootlaces
 
 [![Clojars Project][2]][3]
 
@@ -9,11 +9,11 @@ Handy tasks and things for the [boot Clojure build tool][1].
 
 ## Usage
 
-Add `boot-useful` to your `build.boot` dependencies and `require` the namespace:
+Add `bootlaces` to your `build.boot` dependencies and `require` the namespace:
 
 ```clj
-(set-env! :dependencies '[[tailrecursion/boot-useful "X.Y.Z" :scope "test"]])
-(require '[tailrecursion.boot-useful :refer :all])
+(set-env! :dependencies '[[tailrecursion/bootlaces "X.Y.Z" :scope "test"]])
+(require '[tailrecursion.bootlaces :refer :all])
 ```
 
 Then initialize useful with the project version:
@@ -61,5 +61,5 @@ Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
 
 [1]: https://github.com/tailrecursion/boot
-[2]: http://clojars.org/tailrecursion/boot-useful/latest-version.svg?cache=0
-[3]: http://clojars.org/tailrecursion/boot-useful
+[2]: http://clojars.org/tailrecursion/bootlaces/latest-version.svg?cache=0
+[3]: http://clojars.org/tailrecursion/bootlaces

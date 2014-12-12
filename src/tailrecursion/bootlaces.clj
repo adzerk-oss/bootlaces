@@ -1,4 +1,4 @@
-(ns tailrecursion.boot-useful
+(ns tailrecursion.bootlaces
   (:require
    [clojure.java.io    :as io]
    [boot.core          :refer :all]
@@ -9,26 +9,25 @@
   (let [f (io/file "gpg.edn")]
     (when (.exists f) (read-string (slurp f)))))
 
-(defn useful!
+(defn bootlaces!
   [version]
   (set-env!
-    :src-paths    #{"src"}
-    :repositories #(conj %
-                     ["deploy-clojars"
-                      {:url      "https://clojars.org/repo"
-                       :username (System/getenv "CLOJARS_USER")
-                       :password (System/getenv "CLOJARS_PASS")}]))
+    :resource-paths #{"src"}
+    :repositories   #(conj % ["deploy-clojars"
+                              {:url      "https://clojars.org/repo"
+                               :username (System/getenv "CLOJARS_USER")
+                               :password (System/getenv "CLOJARS_PASS")}]))
 
-  (task-options! push [:repo           "deploy-clojars"
+  (task-options! push {:repo           "deploy-clojars"
                        :ensure-branch  "master"
                        :ensure-clean   true
                        :ensure-version version
-                       :ensure-tag     (last-commit)]))
+                       :ensure-tag     (last-commit)}))
 
 (deftask build-jar
   "Build jar and install to local repo."
   []
-  (comp (pom) (add-src) (jar) (install)))
+  (comp (pom) (jar) (install)))
 
 (deftask push-snapshot
   "Deploy snapshot version to Clojars."
