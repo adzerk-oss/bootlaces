@@ -18,11 +18,11 @@
         :ensure-clean   true
         :ensure-tag     (last-commit)
         :ensure-version +version+}
-  pom  {:project        'tailrecursion/bootlaces
+  pom  {:project        'adzerk/bootlaces
         :version        +version+
         :description    "Micha's assorted boot configurations and things."
-        :url            "https://github.com/tailrecursion/bootlaces"
-        :scm            {:url "https://github.com/tailrecursion/bootlaces"}
+        :url            "https://github.com/adzerk/bootlaces"
+        :scm            {:url "https://github.com/adzerk/bootlaces"}
         :license        {:name "Eclipse Public License"
                          :url  "http://www.eclipse.org/legal/epl-v10.html"}})
 

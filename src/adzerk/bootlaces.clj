@@ -1,4 +1,4 @@
-(ns tailrecursion.bootlaces
+(ns adzerk.bootlaces
   (:require
    [clojure.java.io    :as io]
    [boot.core          :refer :all]

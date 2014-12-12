@@ -12,8 +12,8 @@ Handy tasks and things for the [boot Clojure build tool][1].
 Add `bootlaces` to your `build.boot` dependencies and `require` the namespace:
 
 ```clj
-(set-env! :dependencies '[[tailrecursion/bootlaces "X.Y.Z" :scope "test"]])
-(require '[tailrecursion.bootlaces :refer :all])
+(set-env! :dependencies '[[adzerk/bootlaces "X.Y.Z" :scope "test"]])
+(require '[adzerk.bootlaces :refer :all])
 ```
 
 Then initialize useful with the project version:
@@ -61,5 +61,5 @@ Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
 
 [1]: https://github.com/tailrecursion/boot
-[2]: http://clojars.org/tailrecursion/bootlaces/latest-version.svg?cache=0
-[3]: http://clojars.org/tailrecursion/bootlaces
+[2]: http://clojars.org/adzerk/bootlaces/latest-version.svg?cache=0
+[3]: http://clojars.org/adzerk/bootlaces
