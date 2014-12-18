@@ -13,7 +13,7 @@
 (defn bootlaces!
   [version]
   (set-env!
-    :resource-paths #{"src"}
+    :resource-paths #(conj % "src")
     :repositories   #(conj % ["deploy-clojars"
                               {:url      "https://clojars.org/repo"
                                :username (System/getenv "CLOJARS_USER")
