@@ -7,7 +7,7 @@
   '[clojure.java.io :as io]
   '[boot.git :refer [last-commit]])
 
-(def +version+ "0.1.6-SNAPSHOT")
+(def +version+ "0.1.6")
 
 (task-options!
   push {:repo           "deploy"
