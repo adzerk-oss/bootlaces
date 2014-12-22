@@ -36,7 +36,7 @@
               (print "Password: ")
               (#(swap! clojars-creds assoc :password %)
                (apply str (.readPassword (System/console))))))
-        (set-env! :repositories #(conj % ["deploy" (merge @clojars-creds {:url "https://clojars.org/repo"})]))
+        (set-env! :repositories #(conj % ["deploy-clojars" (merge @clojars-creds {:url "https://clojars.org/repo"})]))
         (next-handler fileset)))))
 
 (deftask build-jar
@@ -61,4 +61,5 @@
     :gpg-sign       true
     :gpg-keyring    (:keyring +gpg-config+)
     :gpg-user-id    (:user-id +gpg-config+)
-    :ensure-release true)))
+    :ensure-release true
+    :repo           "deploy-clojars")))
