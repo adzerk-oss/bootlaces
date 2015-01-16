@@ -16,16 +16,3 @@
   [s project version]
   (let [fmt "\n```clojure\n[%s \"%s\"] ;; latest release\n```\n"]
     (replace-tag s "dependency" (format fmt project version))))
-
-(comment
-  
-  (def s (slurp "README.md"))
-  
-
-  (->> (re-seq (p "dependency") (slurp "README.md")) first (map #(do (println "---") (print %))))
-
-  (-> "README.md"
-      slurp
-      (update-dependency 'foo/bar "1.2.3")
-      println)
-  )
