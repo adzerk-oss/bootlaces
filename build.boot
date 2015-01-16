@@ -6,7 +6,7 @@
 (require '[boot.git :refer [last-commit]]
          '[adzerk.bootlaces :refer :all])
 
-(def +version+ "0.1.8")
+(def +version+ "0.1.9")
 
 (bootlaces! +version+)
 
@@ -21,5 +21,4 @@
        :description    "Adzerk's boot configurations for Clojure libraries "
        :url            "https://github.com/adzerk/bootlaces"
        :scm            {:url "https://github.com/adzerk/bootlaces"}
-       :license        {:name "Eclipse Public License"
-                        :url  "http://www.eclipse.org/legal/epl-v10.html"}})
+       :license        {"Eclipse Public License" "http://www.eclipse.org/legal/epl-v10.html"}})

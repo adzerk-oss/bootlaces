@@ -1,6 +1,10 @@
 # bootlaces
 
-[![Clojars Project][2]][3]
+[](dependency)
+```clojure
+[adzerk/bootlaces "0.1.9"] ;; latest release
+```
+[](/dependency)
 
 Handy tasks and things for the [boot Clojure build tool][1].
 

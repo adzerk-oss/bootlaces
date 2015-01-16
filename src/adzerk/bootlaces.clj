@@ -2,22 +2,27 @@
   {:boot/export-tasks true}
   (:require
    [clojure.java.io    :as io]
+   [boot.util          :as util]
    [boot.core          :refer :all]
    [boot.task.built-in :refer :all]
-   [boot.git           :refer [last-commit]]))
+   [boot.git           :refer [last-commit]]
+   [adzerk.bootlaces.template :as t]))
 
 (def ^:private +gpg-config+
   (let [f (io/file "gpg.edn")]
     (when (.exists f) (read-string (slurp f)))))
 
+(def ^:private +last-commit+
+  (try (last-commit) (catch Throwable _)))
+
 (defn bootlaces!
   [version]
   (set-env! :resource-paths #(conj % "src"))
-  (task-options! push {:repo           "deploy-clojars"
-                       :ensure-branch  "master"
-                       :ensure-clean   true
-                       :ensure-version version
-                       :ensure-tag     (last-commit)}))
+  (task-options!
+    push #(into % (merge {:repo "deploy-clojars" :ensure-version version}
+                         (when +last-commit+ {:ensure-clean  true
+                                              :ensure-branch "master"
+                                              :ensure-tag    (last-commit)})))))
 
 (defn- get-creds []
   (mapv #(System/getenv %) ["CLOJARS_USER" "CLOJARS_PASS"]))
@@ -39,10 +44,25 @@
         (set-env! :repositories #(conj % ["deploy-clojars" (merge @clojars-creds {:url "https://clojars.org/repo"})]))
         (next-handler fileset)))))
 
+(deftask ^:private update-readme-dependency
+  "Update latest release version in README.md file."
+  []
+  (let [readme (io/file "README.md")]
+    (if-not (.exists readme)
+      identity
+      (with-pre-wrap fileset
+        (let [{:keys [project version]} (-> #'pom meta :task-options)
+              old-readme (slurp readme)
+              new-readme (t/update-dependency old-readme project version)]
+          (when (not= old-readme new-readme)
+            (util/info "Updating latest Clojars version in README.md...\n")
+            (spit readme new-readme))
+          fileset)))))
+
 (deftask build-jar
   "Build jar and install to local repo."
   []
-  (comp (pom) (jar) (install)))
+  (comp (pom) (jar) (install) (update-readme-dependency)))
 
 (deftask push-snapshot
   "Deploy snapshot version to Clojars."
@@ -57,7 +77,7 @@
    (collect-clojars-credentials)
    (push
     :file           file
-    :tag            true
+    :tag            (boolean +last-commit+)
     :gpg-sign       true
     :gpg-keyring    (:keyring +gpg-config+)
     :gpg-user-id    (:user-id +gpg-config+)
