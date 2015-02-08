@@ -2,7 +2,7 @@
 
 [](dependency)
 ```clojure
-[adzerk/bootlaces "0.1.9"] ;; latest release
+[adzerk/bootlaces "0.1.10"] ;; latest release
 ```
 [](/dependency)
 
@@ -20,14 +20,14 @@ Add `bootlaces` to your `build.boot` dependencies and `require` the namespace:
 (require '[adzerk.bootlaces :refer :all])
 ```
 
-Then initialize useful with the project version:
+Then initialize bootlaces with the project version:
 
 ```clj
 (def +version+ "0.0-2371-5")
 (bootlaces! +version+)
 ```
 
-Some things you can do in the terminal:
+#### Some things you can do in the terminal:
 
 ```bash
 # build and install project jar file

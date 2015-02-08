@@ -15,9 +15,21 @@
 (def ^:private +last-commit+
   (try (last-commit) (catch Throwable _)))
 
+(defn- assert-edn-resource [x]
+  (-> x
+      io/resource
+      (doto (assert (format "resource not found on class path (%s)" x)))
+      slurp
+      read-string))
+
 (defn bootlaces!
-  [version]
-  (set-env! :resource-paths #(conj % "src"))
+  [version & {:keys [dev-dependencies]}]
+  (merge-env! :resource-paths #{"src"})
+  (when dev-dependencies
+    (->> dev-dependencies
+         assert-edn-resource
+         (map #(into % [:scope "test"]))
+         (merge-env! :dependencies)))
   (task-options!
     push #(into % (merge {:repo "deploy-clojars" :ensure-version version}
                          (when +last-commit+ {:ensure-clean  true
@@ -41,7 +53,7 @@
               (print "Password: ")
               (#(swap! clojars-creds assoc :password %)
                (apply str (.readPassword (System/console))))))
-        (set-env! :repositories #(conj % ["deploy-clojars" (merge @clojars-creds {:url "https://clojars.org/repo"})]))
+        (merge-env! :repositories [["deploy-clojars" (merge @clojars-creds {:url "https://clojars.org/repo"})]])
         (next-handler fileset)))))
 
 (deftask ^:private update-readme-dependency
