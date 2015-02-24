@@ -12,7 +12,7 @@ Handy tasks and things for the [boot Clojure build tool][1].
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
 
 > This is an example build and deployment workflow. It showcases the generality
-> of boot. We actually use this at Adzerk, but you should fork it and tailor it
+> of boot. We actually use this at Adzerk, but you should [fork] and tailor it
 > for your own organization.
 
 ## Usage
@@ -75,3 +75,4 @@ your option) any later version.
 [1]: https://github.com/boot-clj/boot
 [2]: http://clojars.org/adzerk/bootlaces/latest-version.svg?cache=2
 [3]: http://clojars.org/adzerk/bootlaces
+[fork]: https://github.com/adzerk/bootlaces/fork
