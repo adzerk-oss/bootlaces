@@ -11,6 +11,10 @@ Handy tasks and things for the [boot Clojure build tool][1].
 * Provides `build-jar`, `push-snapshot`, and `push-release` tasks
 * Parses a `gpg.edn` file to configure GPG keyring and key ID for jar signing.
 
+> This is an example build and deployment workflow. It showcases the generality
+> of boot. We actually use this at Adzerk, but you should fork it and tailor it
+> for your own organization.
+
 ## Usage
 
 Add `bootlaces` to your `build.boot` dependencies and `require` the namespace:
