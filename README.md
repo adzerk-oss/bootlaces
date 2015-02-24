@@ -50,12 +50,16 @@ boot build-jar push-snapshot
 boot build-jar push-release
 ```
 
+#### Signing
+
 The `gpg.edn` file format:
 
 ```clojure
 {:keyring "/path/to/secring.gpg"
  :user-id "Micha Niskin <micha.niskin@gmail.com>"}
 ```
+
+`gpg.edn` can be global, sourced fom your home directory, or local to your project. Local `gpg.edn` takes precedence over global one.
 
 ## License
 

@@ -9,8 +9,8 @@
    [adzerk.bootlaces.template :as t]))
 
 (def ^:private +gpg-config+
-  (let [f (io/file "gpg.edn")]
-    (when (.exists f) (read-string (slurp f)))))
+  (let [gpg-files (filter #(.exists %) [(io/file "gpg.edn") (io/file (System/getProperty "user.home") "gpg.edn")])]
+    (when-not (empty? gpg-files) (read-string (slurp (first gpg-files))))))
 
 (def ^:private +last-commit+
   (try (last-commit) (catch Throwable _)))
