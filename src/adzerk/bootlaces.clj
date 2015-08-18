@@ -8,10 +8,6 @@
    [boot.git           :refer [last-commit]]
    [adzerk.bootlaces.template :as t]))
 
-(def ^:private +gpg-config+
-  (let [gpg-files (filter #(.exists %) [(io/file "gpg.edn") (io/file (System/getProperty "user.home") "gpg.edn")])]
-    (when-not (empty? gpg-files) (read-string (slurp (first gpg-files))))))
-
 (def ^:private +last-commit+
   (try (last-commit) (catch Throwable _)))
 
@@ -91,7 +87,5 @@
     :file           file
     :tag            (boolean +last-commit+)
     :gpg-sign       true
-    :gpg-keyring    (:keyring +gpg-config+)
-    :gpg-user-id    (:user-id +gpg-config+)
     :ensure-release true
     :repo           "deploy-clojars")))
