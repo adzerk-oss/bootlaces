@@ -19,8 +19,9 @@
       read-string))
 
 (defn bootlaces!
-  [version & {:keys [dev-dependencies]}]
-  (merge-env! :resource-paths #{"src"})
+  [version & {:keys [dev-dependencies dont-modify-paths?]}]
+  (when-not dont-modify-paths?
+    (merge-env! :resource-paths #{"src"}))
   (when dev-dependencies
     (->> dev-dependencies
          assert-edn-resource
