@@ -81,12 +81,13 @@
 
 (deftask push-release
   "Deploy release version to Clojars."
-  [f file PATH str "The jar file to deploy."]
+  [f file PATH str  "The jar file to deploy."
+   t tag       bool "Tag release in git? Defaults to true if in git repo"]
   (comp
    (collect-clojars-credentials)
    (push
     :file           file
-    :tag            (boolean +last-commit+)
+    :tag            (if (nil? tag) (boolean +last-commit+) tag)
     :gpg-sign       true
     :ensure-release true
     :repo           "deploy-clojars")))
