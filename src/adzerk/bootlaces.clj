@@ -31,7 +31,7 @@
     push #(into % (merge {:repo "deploy-clojars" :ensure-version version}
                          (when +last-commit+ {:ensure-clean  true
                                               :ensure-branch "master"
-                                              :ensure-tag    (last-commit)})))))
+                                              :ensure-tag    +last-commit+})))))
 
 (defn- get-creds []
   (mapv #(System/getenv %) ["CLOJARS_USER" "CLOJARS_PASS"]))
