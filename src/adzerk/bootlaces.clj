@@ -56,8 +56,11 @@
 (deftask ^:private update-readme-dependency
   "Update latest release version in README.md file."
   []
-  (let [readme (io/file "README.md")]
-    (if-not (.exists readme)
+  (let [readme (->> ["README.md" "README.org"]
+                    (map io/file)
+                    (filter (memfn exists))
+                    (first))]
+    (if-not readme
       identity
       (with-pre-wrap fileset
         (let [{:keys [project version]} (-> #'pom meta :task-options)
