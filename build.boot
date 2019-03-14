@@ -3,7 +3,7 @@
 (require '[boot.git :refer [last-commit]]
          '[adzerk.bootlaces :refer :all])
 
-(def +version+ "0.1.13")
+(def +version+ "0.2.0")
 
 (bootlaces! +version+)
 
@@ -19,3 +19,7 @@
         :url            "https://github.com/adzerk/bootlaces"
         :scm            {:url "https://github.com/adzerk/bootlaces"}
         :license        {"Eclipse Public License" "http://www.eclipse.org/legal/epl-v10.html"}})
+
+(deftask deploy
+  []
+  (comp (build-jar) (push-release)))
