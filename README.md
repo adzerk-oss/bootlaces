@@ -1,10 +1,6 @@
 # bootlaces
 
-[](dependency)
-```clojure
-[adzerk/bootlaces "0.1.13"] ;; latest release
-```
-[](/dependency)
+![](https://clojars.org/adzerk/bootlaces/latest-version.svg)
 
 Handy tasks and things for the [boot Clojure build tool][1].
 
